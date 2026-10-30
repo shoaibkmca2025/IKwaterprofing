@@ -176,6 +176,22 @@ main:focus{outline:none}
 .gallery figcaption{position:absolute;left:10px;bottom:10px;max-width:calc(100% - 20px);padding:6px 12px;border-radius:var(--r-pill);background:rgb(var(--navy-rgb)/.72);-webkit-backdrop-filter:blur(12px) saturate(160%);backdrop-filter:blur(12px) saturate(160%);color:#fff;font-size:.8125rem;font-weight:600;line-height:1.3}
 .gallery-foot{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px;margin-top:28px}
 .gallery-foot p{color:var(--muted);font-size:.875rem}
+/* Featured job groups: 3-column bento, wide tiles span two columns; dense flow backfills gaps on 2 columns */
+.work-group + .work-group{margin-top:56px}
+.work-group-head{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:6px 32px;margin-bottom:20px}
+.work-group-head h3{font-size:1.375rem;font-weight:700;letter-spacing:-.02em}
+.work-group-head p{max-width:30rem;color:var(--muted);font-size:.9375rem;line-height:1.6}
+.gallery--bento{grid-template-columns:repeat(3,1fr);grid-auto-flow:row dense}
+.gallery--bento .wide{grid-column:span 2}
+.gallery--bento .wide figure{aspect-ratio:auto;height:100%}
+.gallery--bento .wide img{position:absolute;inset:0}
+.gallery video{display:block;width:100%;height:100%;object-fit:cover}
+.video-toggle{position:absolute;top:10px;right:10px;display:grid;place-items:center;width:44px;height:44px;padding:0;border:0;border-radius:50%;background:rgb(var(--navy-rgb)/.62);-webkit-backdrop-filter:blur(12px) saturate(160%);backdrop-filter:blur(12px) saturate(160%);color:#fff;cursor:pointer;transition:transform var(--dur-base) var(--ease-out),background-color var(--dur-fast)}
+.video-toggle:active{transform:scale(.92);transition-duration:var(--dur-press)}
+.video-toggle .icon{grid-area:1/1;width:18px;height:18px;fill:currentColor;stroke:none}
+.video-toggle .i-play,.video-toggle[data-state="paused"] .i-pause{display:none}
+.video-toggle[data-state="paused"] .i-play{display:block}
+@media (hover:hover) and (pointer:fine){.video-toggle:hover{background:rgb(var(--navy-rgb)/.85)}}
 
 /* CTA band */
 .cta{position:relative;overflow:hidden;background:var(--navy-800);color:#fff}
@@ -285,6 +301,7 @@ main:focus{outline:none}
 @media (max-width:960px){
 .services{grid-template-columns:repeat(2,1fr)}
 .gallery{grid-template-columns:repeat(2,1fr)}
+.gallery--bento .wide figure{aspect-ratio:16/10;height:auto}
 .process{grid-template-columns:repeat(2,1fr)}
 .split,.contact-grid{grid-template-columns:1fr}
 .photo img{height:420px}
@@ -331,6 +348,10 @@ main:focus{outline:none}
 .work-card{aspect-ratio:4/3}
 .gallery{gap:10px}
 .gallery figcaption{left:8px;bottom:8px;max-width:calc(100% - 16px);padding:5px 10px;font-size:.75rem}
+.work-group + .work-group{margin-top:40px}
+.work-group-head{margin-bottom:16px}
+.work-group-head h3{font-size:1.1875rem}
+.video-toggle{top:8px;right:8px}
 .photo img{height:300px}
 .photo-card{position:relative;right:auto;bottom:auto;width:auto;margin:-56px 16px 0}
 .cta-inner{flex-direction:column;align-items:flex-start}
@@ -344,7 +365,7 @@ main:focus{outline:none}
 /* Accessibility preferences */
 @media (prefers-reduced-motion:reduce){
 .js .reveal{transform:none;transition:opacity 240ms linear;transition-delay:0ms}
-.btn:active,.service:active,.floating:active,.service:hover,.service:hover .service-go,.btn:hover .icon{transform:none}
+.btn:active,.service:active,.floating:active,.video-toggle:active,.service:hover,.service:hover .service-go,.btn:hover .icon{transform:none}
 .links,.links.is-open,.js .floating:not(.is-shown){transform:none}
 .is-flash{animation:none}
 }
@@ -367,6 +388,8 @@ main:focus{outline:none}
 <symbol id="i-shield" viewBox="0 0 24 24"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></symbol>
 <symbol id="i-crack" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="m11 3-2 5 4 3-3 5 2 5"/></symbol>
 <symbol id="i-instagram" viewBox="0 0 24 24"><rect x="2.75" y="2.75" width="18.5" height="18.5" rx="5.25"/><circle cx="12" cy="12" r="4.25"/><path d="M17.5 6.5h.01"/></symbol>
+<symbol id="i-play" viewBox="0 0 24 24"><path d="M8 5.5v13a1 1 0 0 0 1.53.85l10.4-6.5a1 1 0 0 0 0-1.7L9.53 4.65A1 1 0 0 0 8 5.5z"/></symbol>
+<symbol id="i-pause" viewBox="0 0 24 24"><rect x="6" y="5" width="4" height="14" rx="1.2"/><rect x="14" y="5" width="4" height="14" rx="1.2"/></symbol>
 <symbol id="i-pin" viewBox="0 0 24 24"><path d="M20 10c0 5-5.5 10.2-7.4 11.8a1 1 0 0 1-1.2 0C9.5 20.2 4 15 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></symbol>
 </svg>
 
@@ -479,8 +502,32 @@ main:focus{outline:none}
 <div class="container">
 <div class="section-head reveal">
 <div><div class="eyebrow">On the job</div><h2 class="section-title" id="work-title">Real sites.<br><span class="accent">Real protection.</span></h2></div>
-<p>A look at recent work by the IK Waterproofing crew — terraces, tanks, basements and more.</p>
+<p>A look at recent work by the IK Waterproofing crew — epoxy floors, membrane sheets, terraces, tanks and more.</p>
 </div>
+
+<section class="work-group" aria-labelledby="epoxy-title">
+<div class="work-group-head reveal"><h3 id="epoxy-title">Epoxy floor coating</h3><p>Seamless, high-gloss epoxy for an industrial shop floor, with colour-coded walkways.</p></div>
+<ul class="gallery gallery--bento">
+<li class="wide reveal"><figure><img src="images/epoxy-hall-960.webp" srcset="images/epoxy-hall-640.webp 640w, images/epoxy-hall-960.webp 960w, images/epoxy-hall-1280.webp 1280w" sizes="(max-width: 960px) 100vw, 66vw" width="1280" height="826" alt="Industrial hall with a freshly coated blue epoxy floor and green walkways while the crew finishes the edge" loading="lazy" decoding="async"><figcaption>Industrial epoxy flooring</figcaption></figure></li>
+<li class="reveal"><figure><img src="images/epoxy-application-640.webp" srcset="images/epoxy-application-360.webp 360w, images/epoxy-application-640.webp 640w" sizes="(max-width: 960px) 50vw, 33vw" width="640" height="853" alt="Worker spreading green epoxy over a prepared concrete floor" loading="lazy" decoding="async"><figcaption>Spreading the epoxy coat</figcaption></figure></li>
+<li class="reveal"><figure><img src="images/epoxy-roller-640.webp" srcset="images/epoxy-roller-360.webp 360w, images/epoxy-roller-640.webp 640w" sizes="(max-width: 960px) 50vw, 33vw" width="640" height="853" alt="Crew rolling an even layer of green epoxy across the floor" loading="lazy" decoding="async"><figcaption>Rolling for an even finish</figcaption></figure></li>
+<li class="wide reveal"><figure><img src="images/epoxy-finished-960.webp" srcset="images/epoxy-finished-640.webp 640w, images/epoxy-finished-960.webp 960w, images/epoxy-finished-1280.webp 1280w" sizes="(max-width: 960px) 100vw, 66vw" width="1280" height="826" alt="Finished glossy blue and green epoxy floor in a factory bay" loading="lazy" decoding="async"><figcaption>Finished high-gloss floor</figcaption></figure></li>
+</ul>
+</section>
+
+<section class="work-group" aria-labelledby="membrane-title">
+<div class="work-group-head reveal"><h3 id="membrane-title">Membrane sheet waterproofing</h3><p>Multi-layer Water-Stop membrane sheets bonded to bathroom walls and sealed at the wall–floor junction before tiling.</p></div>
+<ul class="gallery gallery--bento">
+<li class="reveal"><figure><video class="work-video" muted loop playsinline preload="none" poster="images/membrane-walkthrough-poster.webp" width="478" height="850" aria-label="Video walkthrough of a bathroom lined with membrane sheets before tiling"><source src="images/membrane-walkthrough.mp4" type="video/mp4"></video><button class="video-toggle" type="button" data-state="paused" aria-label="Play video"><svg class="icon i-play" aria-hidden="true"><use href="#i-play"/></svg><svg class="icon i-pause" aria-hidden="true"><use href="#i-pause"/></svg></button><figcaption>Bathroom walkthrough</figcaption></figure></li>
+<li class="wide reveal"><figure><img src="images/membrane-bathroom-960.webp" srcset="images/membrane-bathroom-640.webp 640w, images/membrane-bathroom-960.webp 960w" sizes="(max-width: 960px) 100vw, 66vw" width="960" height="619" alt="Bathroom walls fully lined with pink membrane sheets, joints taped and ready for tiling" loading="lazy" decoding="async"><figcaption>Membrane-lined bathroom</figcaption></figure></li>
+<li class="reveal"><figure><img src="images/membrane-water-stop-640.webp" srcset="images/membrane-water-stop-360.webp 360w, images/membrane-water-stop-640.webp 640w" sizes="(max-width: 960px) 50vw, 33vw" width="640" height="853" alt="Close-up of a Water-Stop four-layer waterproofing membrane sheet" loading="lazy" decoding="async"><figcaption>4-layer Water-Stop sheet</figcaption></figure></li>
+<li class="reveal"><figure><img src="images/membrane-edge-640.webp" srcset="images/membrane-edge-360.webp 360w, images/membrane-edge-640.webp 640w" sizes="(max-width: 960px) 50vw, 33vw" width="640" height="853" alt="Membrane sheet wrapped around the edge of a bathroom wall" loading="lazy" decoding="async"><figcaption>Wrapped around wall edges</figcaption></figure></li>
+<li class="reveal"><figure><img src="images/membrane-junction-640.webp" srcset="images/membrane-junction-360.webp 360w, images/membrane-junction-640.webp 640w" sizes="(max-width: 960px) 50vw, 33vw" width="640" height="853" alt="Membrane sheet on a bathroom wall with the wall–floor junction sealed" loading="lazy" decoding="async"><figcaption>Sealed wall–floor junction</figcaption></figure></li>
+</ul>
+</section>
+
+<section class="work-group" aria-labelledby="more-work-title">
+<div class="work-group-head reveal"><h3 id="more-work-title">More from the job site</h3><p>Terraces, tanks, pools and below-ground structures.</p></div>
 <ul class="gallery">
 <li class="reveal"><figure><img src="images/work-terrace-coating-640.webp" srcset="images/work-terrace-coating-360.webp 360w, images/work-terrace-coating-640.webp 640w" sizes="(max-width: 960px) 50vw, 25vw" width="640" height="853" alt="IK Waterproofing crew member applying coating to a terrace floor" loading="lazy" decoding="async"><figcaption>Terrace coating</figcaption></figure></li>
 <li class="reveal"><figure><img src="images/work-pu-injection-640.webp" srcset="images/work-pu-injection-360.webp 360w, images/work-pu-injection-640.webp 640w" sizes="(max-width: 960px) 50vw, 25vw" width="640" height="853" alt="PU injection pump and drill set up on a concrete surface" loading="lazy" decoding="async"><figcaption>PU injection for cracks</figcaption></figure></li>
@@ -491,8 +538,9 @@ main:focus{outline:none}
 <li class="reveal"><figure><img src="images/work-membrane-coat-640.webp" srcset="images/work-membrane-coat-360.webp 360w, images/work-membrane-coat-640.webp 640w" sizes="(max-width: 960px) 50vw, 25vw" width="640" height="853" alt="Worker in a hard hat spreading red membrane coating across a terrace" loading="lazy" decoding="async"><figcaption>Terrace membrane coat</figcaption></figure></li>
 <li class="reveal"><figure><img src="images/work-balcony-prep-640.webp" srcset="images/work-balcony-prep-360.webp 360w, images/work-balcony-prep-640.webp 640w" sizes="(max-width: 960px) 50vw, 25vw" width="640" height="853" alt="Worker scraping and preparing a balcony floor before waterproofing" loading="lazy" decoding="async"><figcaption>Balcony surface preparation</figcaption></figure></li>
 </ul>
+</section>
 <div class="gallery-foot">
-<p>Photos from IK Waterproofing job sites, shared on <a href="https://www.instagram.com/ikwaterproofing/" target="_blank" rel="noopener noreferrer">@ikwaterproofing<span class="sr-only"> (opens in a new tab)</span></a>.</p>
+<p>Photos and video from IK Waterproofing job sites. More on <a href="https://www.instagram.com/ikwaterproofing/" target="_blank" rel="noopener noreferrer">@ikwaterproofing<span class="sr-only"> (opens in a new tab)</span></a>.</p>
 <a class="btn btn-dark" href="https://www.instagram.com/ikwaterproofing/" target="_blank" rel="noopener noreferrer"><svg class="icon" aria-hidden="true"><use href="#i-instagram"/></svg>See more on Instagram<span class="sr-only"> (opens in a new tab)</span></a>
 </div>
 </div>
@@ -601,6 +649,18 @@ addEventListener('scroll',()=>{if(ticking)return;ticking=true;requestAnimationFr
 // Staggered reveal
 const reveal=observe((entries,obs)=>entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('is-visible');obs.unobserve(e.target)}}),{threshold:.12,rootMargin:'0px 0px -40px 0px'});
 $$('.reveal').forEach(el=>{const sibs=[...el.parentElement.children].filter(c=>c.classList.contains('reveal'));el.style.setProperty('--i',Math.min(sibs.indexOf(el),5));reveal.observe(el)});
+
+// Job-site video: plays muted only while on screen and never auto-plays under reduced motion;
+// the button (and a tap on the video) always pauses or resumes it
+const video=$('.work-video'),videoBtn=$('.video-toggle');
+if(video&&videoBtn){
+let userPaused=matchMedia('(prefers-reduced-motion: reduce)').matches;
+const syncBtn=()=>{const playing=!video.paused;videoBtn.dataset.state=playing?'playing':'paused';videoBtn.setAttribute('aria-label',playing?'Pause video':'Play video')};
+const toggle=()=>{if(video.paused){userPaused=false;video.play().catch(()=>{})}else{userPaused=true;video.pause()}};
+video.addEventListener('play',syncBtn);video.addEventListener('pause',syncBtn);
+videoBtn.addEventListener('click',toggle);video.addEventListener('click',toggle);
+observe(([e])=>{if(!e.isIntersecting)video.pause();else if(!userPaused)video.play().catch(()=>{})},{threshold:.4}).observe(video);
+}
 
 // Service cards pre-select the matching option in the form
 const select=$('#type');
