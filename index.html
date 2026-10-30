@@ -254,6 +254,9 @@ main:focus{outline:none}
 .footer-links a:active{color:var(--aqua)}
 @media (hover:hover) and (pointer:fine){.footer-links a:hover{color:var(--aqua)}}
 .footend{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 24px;padding-top:20px;border-top:1px solid rgb(255 255 255/.12);font-size:.8125rem;color:var(--on-dark-4)}
+.credit a{color:var(--on-dark-1);font-weight:600;text-decoration:underline;text-decoration-color:rgb(var(--aqua-rgb)/.6);text-underline-offset:3px;transition:color var(--dur-fast)}
+.credit a:active{color:var(--aqua)}
+@media (hover:hover) and (pointer:fine){.credit a:hover{color:var(--aqua)}}
 
 /* Floating action — appears once the hero is gone, steps aside near the contact form */
 .floating{position:fixed;right:max(16px,env(safe-area-inset-right));bottom:max(16px,env(safe-area-inset-bottom));z-index:40;display:inline-flex;align-items:center;gap:10px;min-height:52px;padding:0 20px 0 16px;border-radius:var(--r-pill);background:var(--brand);color:#fff;font-size:.9375rem;font-weight:700;box-shadow:0 12px 32px -8px rgb(var(--brand-rgb)/.45);transition:transform var(--dur-base) var(--ease-out),opacity var(--dur-fast),background-color var(--dur-fast),visibility 0s}
@@ -556,7 +559,7 @@ main:focus{outline:none}
 <div><a href="#home" class="brand" aria-label="IK Waterproofing, back to top"><img class="logo" src="images/logo-96.webp" srcset="images/logo-96.webp 1x, images/logo-192.webp 2x" width="44" height="44" alt="" loading="lazy" decoding="async"><span>IK Waterproofing<small>Protecting what matters</small></span></a><p class="footer-about">Thoughtful waterproofing solutions for roofs, terraces, walls, and the spaces that matter most.</p></div>
 <nav aria-label="Footer"><ul class="footer-links"><li><a href="#services">Services</a></li><li><a href="#about">About</a></li><li><a href="#process">Process</a></li><li><a href="#applications">Applications</a></li><li><a href="#faq">FAQ</a></li><li><a href="#contact">Contact</a></li><li><a href="https://www.instagram.com/ikwaterproofing/" target="_blank" rel="noopener noreferrer">Instagram <svg class="icon" aria-hidden="true"><use href="#i-ne"/></svg><span class="sr-only">(opens in a new tab)</span></a></li></ul></nav>
 </div>
-<div class="footend"><span>© <span id="year">2026</span> IK Waterproofing. All rights reserved.</span><span>Website concept · Contact and project details pending verification</span></div>
+<div class="footend"><span>© <span id="year">2026</span> IK Waterproofing. All rights reserved.</span><span>Website concept · Contact and project details pending verification</span><span class="credit">Digitally designed by <a href="https://4amglobalmedia.com" target="_blank" rel="noopener">4AM Global Media<span class="sr-only"> (opens in a new tab)</span></a></span></div>
 </div>
 </footer>
 
